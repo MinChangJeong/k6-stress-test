@@ -24,8 +24,7 @@ services:
     container_name: k6
     volumes:
       - ./k6-scripts:/scripts
-    entrypoint: ["k6", "run"]
-    command: ["/scripts/board-test.js"]
+    command: run -o experimental-prometheus-rw /scripts/board-test.js
     environment:
       - K6_PROMETHEUS_RW_SERVER_URL=http://prometheus:9090/api/v1/write
       - K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
